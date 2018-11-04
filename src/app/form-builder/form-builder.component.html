@@ -1,0 +1,21 @@
+<app-form-preview (setModal)=getModal($event)></app-form-preview>
+<app-form-controls></app-form-controls>
+
+<!-- Form Values to create object on submit -->
+<div class="modal" [ngClass]="modalShow ? 'open' : ''">
+  <h2>Form Preview <span class="close" (click)='closeModal()'>x</span></h2>
+  <form class="form" (ngSubmit)="onFormSubmit(additemForm)" #additemForm="ngForm" id="modalForm">
+    <div id="formset"></div>
+    <input type="submit" value="{{btnText}}">   
+  </form>
+</div>
+<div class="modalbackdrop" [ngClass]="modalShow ? 'open' : ''"></div>
+
+<!-- Display Form Values -->
+<div>
+  <h3>Form Values:</h3>
+  <div id="formvalue" *ngFor="let input of inputObject">
+    Control First Value: {{ input.firstValue }},<br>
+    Control Second Value: {{ input.secondValue }}
+  </div>
+</div>
